@@ -1,15 +1,21 @@
+
 <script>
-    document.querySelectorAll('nav ul li a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
+    const elementos = document.querySelectorAll('#servicos');
 
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            window.scrollTo({
-                top: targetElement.offsetTop - 50, 
-                behavior: 'smooth'
-            });
+    elementos.forEach(elemento => {
+        elemento.addEventListener('mouseover', () => {
+            elemento.style.color = getRandomColor(); 
+        });
+        elemento.addEventListener('mouseout', () => {
+            elemento.style.color = 'black'; 
         });
     });
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
 </script>
